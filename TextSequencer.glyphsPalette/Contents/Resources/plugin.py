@@ -71,15 +71,31 @@ class TextSequencer(PalettePlugin):
 				glyph = font[name]
 				layer = glyph.layers[masterId]
 				layersToInsert += [layer]
-		newTabLayers = []
+
+		if tab.textRange == 0:
+			before_selection = []
+			selection = tabLayers
+			after_selection = []
+		else:
+			before_selection = tabLayers[:tab.textCursor]
+			selection = tabLayers[tab.textCursor:tab.textCursor+tab.textRange]
+			after_selection = tabLayers[tab.textCursor+tab.textRange:]
+
+		######
+		newTabLayers = before_selection
 		newTabLayers += layersToInsert
-		for layer in tabLayers:
+		for layer in selection:
 			newTabLayers += [layer] + layersToInsert
+		newTabLayers += after_selection
 		print("")
 		print("***")
 		for l in newTabLayers:
-			print(l)
+			if l.parent.name is None: continue
+			print("/"+l.parent.name, end=" ")
+		print()
 		tab.layers = newTabLayers
+		if tab.textRange != 0:
+			tab.textRange = len(selection)*len(layersToInsert)+len(layersToInsert)+len(selection)
 		# # display all layers of one glyph next to each other
 		# for layer in newTabLayers:
 		# 	tab.layers.append(layer)
