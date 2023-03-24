@@ -3,23 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
-	<key>CFBundleDisplayName</key>
-	<string>TextSequencer</string>
+	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>plugin</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.____Developer____.____PluginClassName____</string>
+	<string>com.RafalBuchner.TextSequencer</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>TextSequencer</string>
-	<key>CFBundlePackageType</key>
-	<string>BNDL</string>
-	<key>CFBundleVersion</key>
-	<string>0.0.2</string>
+	<string>Text Sequencer</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.0.2</string>
+	<string>1.0</string> <!-- 1.0 -->
+	<key>CFBundleVersion</key>
+	<string>1</string> <!-- 123 -->
 	<key>UpdateFeedURL</key>
 	<string>____OnlineUrlToThisPlist____</string>
 	<key>productPageURL</key>
@@ -27,12 +23,12 @@
 	<key>productReleaseNotes</key>
 	<string>____LatestReleaseNotes____</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright, ____Developer____, ____YEAR____</string>
+	<string>Copyright, RafalBuchner, 2023</string>
 	<key>NSPrincipalClass</key>
 	<string>TextSequencer</string>
 	<key>PyMainFileNames</key>
 	<array>
-		<string>../MacOS/main.py</string>
+		<string>plugin.py</string>
 	</array>
 </dict>
 </plist>

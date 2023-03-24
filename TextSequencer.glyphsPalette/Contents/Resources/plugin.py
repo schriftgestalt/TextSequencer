@@ -26,12 +26,25 @@ class TextSequencer(PalettePlugin):
 	def settings(self):
 		self.name = "Text Sequencer"
 		# Create Vanilla window and group with controls
-		width = 150
-		height = 70
+		width = 200
+		height = 211
 		self.paletteView = Window((width, height))
 		self.paletteView.group = Group((0, 0, width, height))
 		x,y,p = self.padding
-		self.paletteView.group.stringEdit = EditText((x,y,-p,self.btnH))
+		self.paletteView.group.mainTitle = TextBox((x,y,-p,self.btnH), "main sequence")
+		y += p + self.txtH
+		self.paletteView.group.stringInputMain = EditText((x,y,-p,self.btnH))
+		y += p + self.btnH
+		self.paletteView.group.startEndTitle = TextBox((x,y,-p,self.btnH), "start/end")
+		y += p + self.txtH
+		self.paletteView.group.stringInputStart = EditText((x,y,100,self.btnH))
+		self.paletteView.group.stringInputEnd = EditText((x+100,y,100,self.btnH))
+		y += p + self.btnH
+
+		self.paletteView.group.leftRightTitle = TextBox((x,y,-p,self.btnH), "left/right")
+		y += p + self.txtH
+		self.paletteView.group.stringInputLeft = EditText((x,y,100,self.btnH))
+		self.paletteView.group.stringInputRight = EditText((x+100,y,100,self.btnH))
 		y += p + self.btnH
 		self.paletteView.group.apply = Button((x,y,-p,self.btnH), "Insert Inbetween", callback=self.insert)
 		self.dialog = self.paletteView.group.getNSView()
@@ -64,13 +77,52 @@ class TextSequencer(PalettePlugin):
 
 		
 		tabLayers = [layer for layer in tab.layers]
-		glyphsToInsert = splitText(self.paletteView.group.stringEdit.get(), cmap)
+		glyphsToInsert = splitText(self.paletteView.group.stringInputMain.get(), cmap)
+		glyphsToInsertStart = splitText(self.paletteView.group.stringInputStart.get(), cmap)
+		glyphsToInsertEnd = splitText(self.paletteView.group.stringInputEnd.get(), cmap)
+		glyphsToInsertLeft = splitText(self.paletteView.group.stringInputLeft.get(), cmap)
+		glyphsToInsertRight = splitText(self.paletteView.group.stringInputRight.get(), cmap)
+		
+
 		layersToInsert = []
+
 		for name in glyphsToInsert:
 			if name in fontNames:
 				glyph = font[name]
 				layer = glyph.layers[masterId]
 				layersToInsert += [layer]
+
+		layersToInsertStart = []
+
+		for name in glyphsToInsertStart:
+			if name in fontNames:
+				glyph = font[name]
+				layer = glyph.layers[masterId]
+				layersToInsertStart += [layer]
+
+		layersToInsertEnd = []
+
+		for name in glyphsToInsertEnd:
+			if name in fontNames:
+				glyph = font[name]
+				layer = glyph.layers[masterId]
+				layersToInsertEnd += [layer]
+
+		layersToInsertLeft = []
+
+		for name in glyphsToInsertLeft:
+			if name in fontNames:
+				glyph = font[name]
+				layer = glyph.layers[masterId]
+				layersToInsertLeft += [layer]
+
+		layersToInsertRight = []
+
+		for name in glyphsToInsertRight:
+			if name in fontNames:
+				glyph = font[name]
+				layer = glyph.layers[masterId]
+				layersToInsertRight += [layer]
 
 		if tab.textRange == 0:
 			before_selection = []
@@ -83,9 +135,11 @@ class TextSequencer(PalettePlugin):
 
 		######
 		newTabLayers = before_selection
+		newTabLayers += layersToInsertStart
 		newTabLayers += layersToInsert
 		for layer in selection:
-			newTabLayers += [layer] + layersToInsert
+			newTabLayers += layersToInsertLeft + [layer] + layersToInsertRight + layersToInsert
+		newTabLayers += layersToInsertEnd
 		newTabLayers += after_selection
 		print("")
 		print("***")
@@ -95,7 +149,7 @@ class TextSequencer(PalettePlugin):
 		print()
 		tab.layers = newTabLayers
 		if tab.textRange != 0:
-			tab.textRange = len(selection)*len(layersToInsert)+len(layersToInsert)+len(selection)
+			tab.textRange = len(layersToInsertStart) + len(layersToInsertEnd) + len(selection)*len(layersToInsert)+len(layersToInsert)+len(selection) + len(layersToInsertLeft)+len(selection)+ len(layersToInsertRight)+len(selection)
 		# # display all layers of one glyph next to each other
 		# for layer in newTabLayers:
 		# 	tab.layers.append(layer)
