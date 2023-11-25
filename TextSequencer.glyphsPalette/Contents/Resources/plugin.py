@@ -48,6 +48,18 @@ class TextSequencer(PalettePlugin):
 		y += p + self.btnH
 		self.paletteView.group.apply = Button((x,y,-p,self.btnH), "Insert Inbetween", callback=self.insert)
 		self.dialog = self.paletteView.group.getNSView()
+
+		self.setupFocusOrder()
+
+	@objc.python_method
+	def setupFocusOrder(self):
+		self.paletteView.group.stringInputMain._nsObject.setNextKeyView_(self.paletteView.group.stringInputStart._nsObject)
+		self.paletteView.group.stringInputStart._nsObject.setNextKeyView_(self.paletteView.group.stringInputEnd._nsObject)
+		self.paletteView.group.stringInputEnd._nsObject.setNextKeyView_(self.paletteView.group.stringInputLeft._nsObject)
+		self.paletteView.group.stringInputLeft._nsObject.setNextKeyView_(self.paletteView.group.stringInputRight._nsObject)
+		self.paletteView.group.stringInputRight._nsObject.setNextKeyView_(self.paletteView.group.apply._nsObject)
+		self.paletteView.group.apply._nsObject.setNextKeyView_(self.paletteView.group.stringInputMain._nsObject)
+
 	
 	@objc.python_method
 	def insert(self, sender):
