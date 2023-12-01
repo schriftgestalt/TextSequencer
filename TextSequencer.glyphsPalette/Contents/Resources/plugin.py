@@ -27,38 +27,83 @@ class TextSequencer(PalettePlugin):
 		self.name = "Text Sequencer"
 		# Create Vanilla window and group with controls
 		width = 200
-		height = 211
+		height = 221
+		x, y, p = self.padding
 		self.paletteView = Window((width, height))
-		self.paletteView.group = Group((0, 0, width, height))
-		x,y,p = self.padding
-		self.paletteView.group.mainTitle = TextBox((x,y,-p,self.btnH), "main sequence")
-		y += p + self.txtH
-		self.paletteView.group.stringInputMain = EditText((x,y,-p,self.btnH))
-		y += p + self.btnH
-		self.paletteView.group.startEndTitle = TextBox((x,y,-p,self.btnH), "start/end")
-		y += p + self.txtH
-		self.paletteView.group.stringInputStart = EditText((x,y,100,self.btnH))
-		self.paletteView.group.stringInputEnd = EditText((x+100,y,100,self.btnH))
-		y += p + self.btnH
+		
 
-		self.paletteView.group.leftRightTitle = TextBox((x,y,-p,self.btnH), "left/right")
-		y += p + self.txtH
-		self.paletteView.group.stringInputLeft = EditText((x,y,100,self.btnH))
-		self.paletteView.group.stringInputRight = EditText((x+100,y,100,self.btnH))
-		y += p + self.btnH
-		self.paletteView.group.apply = Button((x,y,-p,self.btnH), "Insert Inbetween", callback=self.insert)
-		self.dialog = self.paletteView.group.getNSView()
+
+		self.mainGroup  = Box("auto")
+		self.mainGroup.mainTitle = TextBox((0,0,-0,self.btnH), "main sequence")
+		self.mainGroup.stringInputMain = EditText((0,self.btnH,-0,self.btnH))
+		
+
+		###
+		self.startGroup  = Box("auto")
+		self.endGroup    = Box("auto")
+
+		self.startGroup.startTitle = TextBox((0,0,-0,self.btnH), "start")
+		self.endGroup.endTitle = TextBox((0,0,-0,self.btnH), "end")
+		self.startGroup.stringInputStart = EditText((0,self.btnH,-0,self.btnH))
+		self.endGroup.stringInputEnd = EditText((0,self.btnH,-0,self.btnH))
+
+		self.startEndInputs = HorizontalStackView(
+            "auto",
+            views=[
+                dict(view=self.startGroup),
+                dict(view=self.endGroup),
+            ],
+            spacing=4,
+            edgeInsets=(0,0,0,0),
+        )
+		###
+
+		self.leftGroup  = Box("auto")
+		self.rightGroup = Box("auto")
+
+		self.leftGroup.leftTitle = TextBox((0,0,-0,self.btnH), "left")
+		self.rightGroup.rightTitle = TextBox((0,0,-0,self.btnH), "right")
+		self.leftGroup.stringInputLeft = EditText((0,self.btnH,-0,self.btnH))
+		self.rightGroup.stringInputRight = EditText((0,self.btnH,-0,self.btnH))
+
+		self.leftRightInputs = HorizontalStackView(
+            "auto",
+            # (0, y, -0, self.btnH*2+p*3.25),
+            views=[
+                dict(view=self.leftGroup),
+                dict(view=self.rightGroup),
+            ],
+            spacing=4,
+            edgeInsets=(0, 0, 0, 0),
+        )
+
+		self.apply = Button("auto", "Insert Inbetween", callback=self.insert)
+
+		self.paletteView.group = VerticalStackView(
+            (x,y,width-p,height-p),
+            views=[
+                dict(view=self.mainGroup),
+                dict(view=self.startEndInputs),
+                dict(view=self.leftRightInputs),
+                dict(view=self.apply),
+            ],
+            spacing=4,
+            edgeInsets=(4, 4, 4, 4),
+        )
+
+
+		self.dialog = self.paletteView.group.getNSStackView()
 
 		self.setupFocusOrder()
 
 	@objc.python_method
 	def setupFocusOrder(self):
-		self.paletteView.group.stringInputMain._nsObject.setNextKeyView_(self.paletteView.group.stringInputStart._nsObject)
-		self.paletteView.group.stringInputStart._nsObject.setNextKeyView_(self.paletteView.group.stringInputEnd._nsObject)
-		self.paletteView.group.stringInputEnd._nsObject.setNextKeyView_(self.paletteView.group.stringInputLeft._nsObject)
-		self.paletteView.group.stringInputLeft._nsObject.setNextKeyView_(self.paletteView.group.stringInputRight._nsObject)
-		self.paletteView.group.stringInputRight._nsObject.setNextKeyView_(self.paletteView.group.apply._nsObject)
-		self.paletteView.group.apply._nsObject.setNextKeyView_(self.paletteView.group.stringInputMain._nsObject)
+		self.mainGroup.stringInputMain._nsObject.setNextKeyView_(self.startGroup.stringInputStart._nsObject)
+		self.startGroup.stringInputStart._nsObject.setNextKeyView_(self.endGroup.stringInputEnd._nsObject)
+		self.endGroup.stringInputEnd._nsObject.setNextKeyView_(self.leftGroup.stringInputLeft._nsObject)
+		self.leftGroup.stringInputLeft._nsObject.setNextKeyView_(self.rightGroup.stringInputRight._nsObject)
+		self.rightGroup.stringInputRight._nsObject.setNextKeyView_(self.apply._nsObject)
+		self.apply._nsObject.setNextKeyView_(self.mainGroup.stringInputMain._nsObject)
 
 	
 	@objc.python_method
@@ -89,11 +134,11 @@ class TextSequencer(PalettePlugin):
 
 		
 		tabLayers = [layer for layer in tab.layers]
-		glyphsToInsert = splitText(self.paletteView.group.stringInputMain.get(), cmap)
-		glyphsToInsertStart = splitText(self.paletteView.group.stringInputStart.get(), cmap)
-		glyphsToInsertEnd = splitText(self.paletteView.group.stringInputEnd.get(), cmap)
-		glyphsToInsertLeft = splitText(self.paletteView.group.stringInputLeft.get(), cmap)
-		glyphsToInsertRight = splitText(self.paletteView.group.stringInputRight.get(), cmap)
+		glyphsToInsert = splitText(self.mainGroup.stringInputMain.get(), cmap)
+		glyphsToInsertStart = splitText(self.startGroup.stringInputStart.get(), cmap)
+		glyphsToInsertEnd = splitText(self.endGroup.stringInputEnd.get(), cmap)
+		glyphsToInsertLeft = splitText(self.leftGroup.stringInputLeft.get(), cmap)
+		glyphsToInsertRight = splitText(self.rightGroup.stringInputRight.get(), cmap)
 		
 
 		layersToInsert = []
