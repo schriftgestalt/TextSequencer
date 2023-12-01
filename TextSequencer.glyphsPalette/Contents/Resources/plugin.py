@@ -15,6 +15,14 @@ from __future__ import division, print_function, unicode_literals
 from GlyphsApp.plugins import *
 from textSplitter import splitText
 from vanilla import *
+from AppKit import NSRoundRectBezelStyle
+
+
+def BezelButton(posSize, title, callback=None, sizeStyle="small"):
+    button = Button(posSize, title, callback=callback, sizeStyle=sizeStyle)
+    nsObj = button.getNSButton()
+    nsObj.setBezelStyle_(NSRoundRectBezelStyle)
+    return button
 
 
 class TextSequencer(PalettePlugin):
@@ -70,7 +78,7 @@ class TextSequencer(PalettePlugin):
             edgeInsets=(0, 0, 0, 0),
         )
 
-        self.apply = Button("auto", "Insert Inbetween", callback=self.insert)
+        self.apply = BezelButton("auto", "Insert Inbetween", callback=self.insert)
 
         self.paletteView.group = VerticalStackView(
             (x, y, width - p, height - p),
