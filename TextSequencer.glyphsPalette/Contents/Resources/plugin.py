@@ -31,16 +31,16 @@ class TextSequencer(PalettePlugin):
         self.paletteView = Window((width, height))
 
         self.mainGroup = Box("auto")
-        self.mainGroup.mainTitle = TextBox((0, 0, -0, self.btnH), "main sequence")
-        self.mainGroup.stringInputMain = EditText((0, self.btnH, -0, self.btnH))
+        self.mainGroup.mainTitle = TextBox((2, 0, -2, self.btnH), "main sequence")
+        self.mainGroup.stringInputMain = EditText((2, self.btnH, -2, self.btnH))
 
         self.startGroup = Box("auto")
         self.endGroup = Box("auto")
 
         self.startGroup.startTitle = TextBox((0, 0, -0, self.btnH), "start")
         self.endGroup.endTitle = TextBox((0, 0, -0, self.btnH), "end")
-        self.startGroup.stringInputStart = EditText((0, self.btnH, -0, self.btnH))
-        self.endGroup.stringInputEnd = EditText((0, self.btnH, -0, self.btnH))
+        self.startGroup.stringInputStart = EditText((2, self.btnH, -2, self.btnH))
+        self.endGroup.stringInputEnd = EditText((2, self.btnH, -2, self.btnH))
 
         self.startEndInputs = HorizontalStackView(
             "auto",
@@ -57,8 +57,8 @@ class TextSequencer(PalettePlugin):
 
         self.leftGroup.leftTitle = TextBox((0, 0, -0, self.btnH), "left")
         self.rightGroup.rightTitle = TextBox((0, 0, -0, self.btnH), "right")
-        self.leftGroup.stringInputLeft = EditText((0, self.btnH, -0, self.btnH))
-        self.rightGroup.stringInputRight = EditText((0, self.btnH, -0, self.btnH))
+        self.leftGroup.stringInputLeft = EditText((2, self.btnH, -2, self.btnH))
+        self.rightGroup.stringInputRight = EditText((2, self.btnH, -2, self.btnH))
 
         self.leftRightInputs = HorizontalStackView(
             "auto",
@@ -78,7 +78,7 @@ class TextSequencer(PalettePlugin):
                 dict(view=self.mainGroup),
                 dict(view=self.startEndInputs),
                 dict(view=self.leftRightInputs),
-                dict(view=self.apply),
+                dict(view=self.apply, height=36),
             ],
             spacing=4,
             edgeInsets=(4, 4, 4, 4),
