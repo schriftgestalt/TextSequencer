@@ -78,7 +78,7 @@ class TextSequencer(PalettePlugin):
             edgeInsets=(0, 0, 0, 0),
         )
 
-        self.apply = BezelButton("auto", "Insert Inbetween", callback=self.insert)
+        self.apply = BezelButton("auto", "Insert", callback=self.insert)
 
         self.paletteView.group = VerticalStackView(
             (x, y, width - p, height - p),
