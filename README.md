@@ -1,6 +1,6 @@
 # Text Sequencer
 
-
+![header](header.png)
 
 A plugin that helps in generating spacing/kerning sequence strings in the glyph edit window.
 
