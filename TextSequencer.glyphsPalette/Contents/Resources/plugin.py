@@ -12,7 +12,9 @@
 ###########################################################################################################
 
 from __future__ import division, print_function, unicode_literals
-from GlyphsApp.plugins import *
+import objc
+from GlyphsApp import Glyphs
+from GlyphsApp.plugins import PalettePlugin
 from textSplitter import splitText
 from vanilla import *
 from AppKit import NSRoundRectBezelStyle
@@ -123,7 +125,7 @@ class TextSequencer(PalettePlugin):
 
         font = Glyphs.font
         cmap = {
-            int("0x" + glyph.unicode, 0): glyph.name
+            glyph.unicodeChar: glyph.name
             for glyph in font.glyphs
             if glyph.unicode is not None
         }
@@ -196,8 +198,8 @@ class TextSequencer(PalettePlugin):
             after_selection = []
         else:
             before_selection = tabLayers[: tab.textCursor]
-            selection = tabLayers[tab.textCursor : tab.textCursor + tab.textRange]
-            after_selection = tabLayers[tab.textCursor + tab.textRange :]
+            selection = tabLayers[tab.textCursor: tab.textCursor + tab.textRange]
+            after_selection = tabLayers[tab.textCursor + tab.textRange:]
 
         newTabLayers = before_selection
         newTabLayers += layersToInsertStart
@@ -210,10 +212,10 @@ class TextSequencer(PalettePlugin):
         newTabLayers += after_selection
         print("")
         print("***")
-        for l in newTabLayers:
-            if l.parent.name is None:
+        for layer in newTabLayers:
+            if layer.parent.name is None:
                 continue
-            print("/" + l.parent.name, end=" ")
+            print("/" + layer.parent.name, end=" ")
         print()
         tab.layers = newTabLayers
         if tab.textRange != 0:
