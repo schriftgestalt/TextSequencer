@@ -42,7 +42,7 @@ class TextSequencer(PalettePlugin):
 
         font = Glyphs.font
         cmap = {
-            glyph.unicodeChar: glyph.name
+            glyph.unicodeChar(): glyph.name
             for glyph in font.glyphs
             if glyph.unicode is not None
         }
