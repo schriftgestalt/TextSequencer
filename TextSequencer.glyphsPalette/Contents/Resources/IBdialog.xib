@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment version="1080" identifier="macosx"/>
+        <deployment version="101100" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,86 +18,189 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="1" customClass="GSPaletteView">
-            <rect key="frame" x="0.0" y="0.0" width="289" height="103"/>
+        <customView verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="1" customClass="GSPaletteView">
+            <rect key="frame" x="0.0" y="0.0" width="289" height="104"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tRl-Hz-AyT">
-                    <rect key="frame" x="6" y="84" width="33" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="main" id="ERm-KE-Ajg">
-                        <font key="font" usesAppearanceFont="YES"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="APQ-Ce-s4a">
-                    <rect key="frame" x="6" y="58" width="33" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="start" id="A8K-1k-IuX">
-                        <font key="font" usesAppearanceFont="YES"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cVV-UY-pgQ">
-                    <rect key="frame" x="41" y="55" width="98" height="22"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" id="WRM-Cg-nvS">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="YPh-5H-fuE" name="value" keyPath="values.com_RafalBuchner_TextSequencer_start" id="55Y-M0-WnK"/>
-                        <outlet property="nextKeyView" destination="BdB-qf-gub" id="1uv-Dc-MXX"/>
-                    </connections>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uno-Kn-LVs">
-                    <rect key="frame" x="145" y="58" width="33" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="end" id="4ML-se-Juy">
-                        <font key="font" usesAppearanceFont="YES"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BdB-qf-gub">
-                    <rect key="frame" x="180" y="55" width="97" height="22"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" id="3lj-t7-0LC">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="YPh-5H-fuE" name="value" keyPath="values.com_RafalBuchner_TextSequencer_end" id="wy8-ra-wuL"/>
-                        <outlet property="nextKeyView" destination="VBh-go-Py8" id="eav-19-3jJ"/>
-                    </connections>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fk7-Tf-YHM">
-                    <rect key="frame" x="6" y="32" width="24" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="left" id="v10-qU-sUp">
-                        <font key="font" usesAppearanceFont="YES"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VBh-go-Py8">
-                    <rect key="frame" x="41" y="29" width="98" height="22"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" id="VyX-5d-SSw">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="YPh-5H-fuE" name="value" keyPath="values.com_RafalBuchner_TextSequencer_left" id="S2R-bQ-RIK"/>
-                        <outlet property="nextKeyView" destination="Mdp-5X-J1X" id="yng-U8-uLL"/>
-                    </connections>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="80N-9Q-gJr">
-                    <rect key="frame" x="145" y="32" width="33" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="right" id="d2U-tf-xXR">
-                        <font key="font" usesAppearanceFont="YES"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rh8-gw-0HD">
+                <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kRo-eM-E1B">
+                    <rect key="frame" x="8" y="30" width="269" height="74"/>
+                    <subviews>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="msT-vd-iH0">
+                            <rect key="frame" x="0.0" y="52" width="269" height="22"/>
+                            <subviews>
+                                <textField verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="oeW-lK-4eE">
+                                    <rect key="frame" x="33" y="0.0" width="236" height="22"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" id="cvB-U6-O40">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="YPh-5H-fuE" name="value" keyPath="values.com_RafalBuchner_TextSequencer_main" id="U5q-y5-u2h"/>
+                                        <outlet property="nextKeyView" destination="cVV-UY-pgQ" id="oJ7-CQ-2p0"/>
+                                    </connections>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tRl-Hz-AyT">
+                                    <rect key="frame" x="-2" y="3" width="33" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="main" id="ERm-KE-Ajg">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="oeW-lK-4eE" secondAttribute="trailing" id="Ae4-wZ-vXK"/>
+                                <constraint firstAttribute="bottom" secondItem="oeW-lK-4eE" secondAttribute="bottom" id="Hg5-Op-uYe"/>
+                                <constraint firstItem="tRl-Hz-AyT" firstAttribute="leading" secondItem="msT-vd-iH0" secondAttribute="leading" id="R7R-tC-rNM"/>
+                                <constraint firstItem="oeW-lK-4eE" firstAttribute="top" secondItem="msT-vd-iH0" secondAttribute="top" id="sGa-WQ-uwf"/>
+                                <constraint firstItem="oeW-lK-4eE" firstAttribute="leading" secondItem="tRl-Hz-AyT" secondAttribute="trailing" constant="4" id="smQ-fj-VZA"/>
+                                <constraint firstItem="oeW-lK-4eE" firstAttribute="firstBaseline" secondItem="tRl-Hz-AyT" secondAttribute="firstBaseline" id="ws2-A7-Y1a"/>
+                            </constraints>
+                        </customView>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="VQ2-i4-s5H">
+                            <rect key="frame" x="0.0" y="26" width="269" height="22"/>
+                            <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="APQ-Ce-s4a">
+                                    <rect key="frame" x="-2" y="3" width="33" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="start" id="A8K-1k-IuX">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="cVV-UY-pgQ">
+                                    <rect key="frame" x="33" y="0.0" width="101" height="22"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" id="WRM-Cg-nvS">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="YPh-5H-fuE" name="value" keyPath="values.com_RafalBuchner_TextSequencer_start" id="55Y-M0-WnK"/>
+                                        <outlet property="nextKeyView" destination="BdB-qf-gub" id="1uv-Dc-MXX"/>
+                                    </connections>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uno-Kn-LVs">
+                                    <rect key="frame" x="140" y="3" width="27" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="end" id="4ML-se-Juy">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BdB-qf-gub">
+                                    <rect key="frame" x="169" y="0.0" width="100" height="22"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" id="3lj-t7-0LC">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="YPh-5H-fuE" name="value" keyPath="values.com_RafalBuchner_TextSequencer_end" id="wy8-ra-wuL"/>
+                                        <outlet property="nextKeyView" destination="VBh-go-Py8" id="eav-19-3jJ"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="cVV-UY-pgQ" firstAttribute="top" secondItem="VQ2-i4-s5H" secondAttribute="top" id="5y1-Wo-Sjd"/>
+                                <constraint firstItem="uno-Kn-LVs" firstAttribute="firstBaseline" secondItem="APQ-Ce-s4a" secondAttribute="firstBaseline" id="DiD-PU-SM1"/>
+                                <constraint firstItem="BdB-qf-gub" firstAttribute="width" secondItem="cVV-UY-pgQ" secondAttribute="width" id="M8V-16-hZJ"/>
+                                <constraint firstAttribute="trailing" secondItem="BdB-qf-gub" secondAttribute="trailing" id="Nbh-D2-L9Z"/>
+                                <constraint firstItem="uno-Kn-LVs" firstAttribute="leading" secondItem="cVV-UY-pgQ" secondAttribute="trailing" constant="8" id="Obz-vQ-v2M"/>
+                                <constraint firstItem="APQ-Ce-s4a" firstAttribute="leading" secondItem="VQ2-i4-s5H" secondAttribute="leading" id="RDT-XX-T5T"/>
+                                <constraint firstItem="BdB-qf-gub" firstAttribute="width" secondItem="cVV-UY-pgQ" secondAttribute="width" id="VgV-mW-aMZ"/>
+                                <constraint firstAttribute="bottom" secondItem="cVV-UY-pgQ" secondAttribute="bottom" id="bJK-ZV-q7n"/>
+                                <constraint firstItem="BdB-qf-gub" firstAttribute="leading" secondItem="uno-Kn-LVs" secondAttribute="trailing" constant="4" id="ga0-8M-wTP"/>
+                                <constraint firstItem="cVV-UY-pgQ" firstAttribute="leading" secondItem="APQ-Ce-s4a" secondAttribute="trailing" constant="4" id="gm9-BL-IKl"/>
+                                <constraint firstItem="BdB-qf-gub" firstAttribute="firstBaseline" secondItem="APQ-Ce-s4a" secondAttribute="firstBaseline" id="tfx-S2-TKc"/>
+                                <constraint firstItem="cVV-UY-pgQ" firstAttribute="firstBaseline" secondItem="APQ-Ce-s4a" secondAttribute="firstBaseline" id="z3O-yv-hAG"/>
+                            </constraints>
+                            <connections>
+                                <binding destination="YPh-5H-fuE" name="hidden" keyPath="values.com_RafalBuchner_TextSequencer_ShowStartEnd" id="wUB-2k-f3S">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </customView>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Eri-f1-zwG">
+                            <rect key="frame" x="0.0" y="0.0" width="269" height="22"/>
+                            <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fk7-Tf-YHM">
+                                    <rect key="frame" x="-2" y="3" width="24" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="left" id="v10-qU-sUp">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="VBh-go-Py8">
+                                    <rect key="frame" x="24" y="0.0" width="102" height="22"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" id="VyX-5d-SSw">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="YPh-5H-fuE" name="value" keyPath="values.com_RafalBuchner_TextSequencer_left" id="S2R-bQ-RIK"/>
+                                        <outlet property="nextKeyView" destination="Mdp-5X-J1X" id="yng-U8-uLL"/>
+                                    </connections>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="80N-9Q-gJr">
+                                    <rect key="frame" x="132" y="3" width="33" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="right" id="d2U-tf-xXR">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mdp-5X-J1X">
+                                    <rect key="frame" x="167" y="0.0" width="102" height="22"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" id="SgE-bB-Jcc">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="YPh-5H-fuE" name="value" keyPath="values.com_RafalBuchner_TextSequencer_right" id="M54-gu-1LX"/>
+                                        <outlet property="nextKeyView" destination="oeW-lK-4eE" id="BcK-EB-5nh"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="80N-9Q-gJr" firstAttribute="firstBaseline" secondItem="Fk7-Tf-YHM" secondAttribute="firstBaseline" id="1Ta-pI-fy6"/>
+                                <constraint firstItem="VBh-go-Py8" firstAttribute="top" secondItem="Eri-f1-zwG" secondAttribute="top" id="6ib-Ia-ovm"/>
+                                <constraint firstAttribute="trailing" secondItem="Mdp-5X-J1X" secondAttribute="trailing" id="aVg-CZ-eAB"/>
+                                <constraint firstItem="80N-9Q-gJr" firstAttribute="leading" secondItem="VBh-go-Py8" secondAttribute="trailing" constant="8" symbolic="YES" id="bbe-XV-FdU"/>
+                                <constraint firstItem="Mdp-5X-J1X" firstAttribute="leading" secondItem="80N-9Q-gJr" secondAttribute="trailing" constant="4" id="btY-84-yNv"/>
+                                <constraint firstAttribute="bottom" secondItem="VBh-go-Py8" secondAttribute="bottom" id="hup-uu-eUx"/>
+                                <constraint firstItem="Mdp-5X-J1X" firstAttribute="firstBaseline" secondItem="Fk7-Tf-YHM" secondAttribute="firstBaseline" id="kV2-Ml-OgL"/>
+                                <constraint firstItem="VBh-go-Py8" firstAttribute="firstBaseline" secondItem="Fk7-Tf-YHM" secondAttribute="firstBaseline" id="oYm-Lq-BQn"/>
+                                <constraint firstItem="Fk7-Tf-YHM" firstAttribute="leading" secondItem="Eri-f1-zwG" secondAttribute="leading" id="pix-CD-JG5"/>
+                                <constraint firstItem="Mdp-5X-J1X" firstAttribute="width" secondItem="VBh-go-Py8" secondAttribute="width" id="pvf-kJ-cVP"/>
+                                <constraint firstItem="VBh-go-Py8" firstAttribute="leading" secondItem="Fk7-Tf-YHM" secondAttribute="trailing" constant="4" id="she-P1-gbX"/>
+                            </constraints>
+                            <connections>
+                                <binding destination="YPh-5H-fuE" name="hidden" keyPath="values.com_RafalBuchner_TextSequencer_ShowLeftRight" id="BnY-q5-qWY">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </customView>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+                <button verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="rh8-gw-0HD">
                     <rect key="frame" x="105" y="-3" width="79" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="65" id="jQ9-Zf-DNX"/>
@@ -110,65 +213,58 @@
                         <action selector="insert:" target="-2" id="zeH-GZ-ITo"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oeW-lK-4eE">
-                    <rect key="frame" x="41" y="81" width="236" height="22"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" id="cvB-U6-O40">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cmC-ci-Ayw" customClass="GSMenuButton">
+                    <rect key="frame" x="255" y="0.0" width="22" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="Ukv-SY-Rmf"/>
+                        <constraint firstAttribute="height" constant="22" id="hvU-lo-kSA"/>
+                    </constraints>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSActionTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="ztE-Mt-az2">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="preferredEdge">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <binding destination="YPh-5H-fuE" name="value" keyPath="values.com_RafalBuchner_TextSequencer_main" id="U5q-y5-u2h"/>
-                        <outlet property="nextKeyView" destination="cVV-UY-pgQ" id="oJ7-CQ-2p0"/>
+                        <outlet property="menu" destination="aYI-td-gXO" id="jq3-nC-d8r"/>
                     </connections>
-                </textField>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mdp-5X-J1X">
-                    <rect key="frame" x="180" y="29" width="97" height="22"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" id="SgE-bB-Jcc">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="YPh-5H-fuE" name="value" keyPath="values.com_RafalBuchner_TextSequencer_right" id="M54-gu-1LX"/>
-                        <outlet property="nextKeyView" destination="oeW-lK-4eE" id="BcK-EB-5nh"/>
-                    </connections>
-                </textField>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="rh8-gw-0HD" firstAttribute="top" secondItem="VBh-go-Py8" secondAttribute="bottom" constant="5" id="03O-RC-O4u"/>
-                <constraint firstItem="BdB-qf-gub" firstAttribute="width" secondItem="cVV-UY-pgQ" secondAttribute="width" id="2UN-gS-Uaj"/>
-                <constraint firstItem="Mdp-5X-J1X" firstAttribute="leading" secondItem="80N-9Q-gJr" secondAttribute="trailing" constant="4" id="5BU-E0-oPX"/>
-                <constraint firstItem="BdB-qf-gub" firstAttribute="trailing" secondItem="oeW-lK-4eE" secondAttribute="trailing" id="7Sg-4n-a3c"/>
-                <constraint firstItem="BdB-qf-gub" firstAttribute="firstBaseline" secondItem="APQ-Ce-s4a" secondAttribute="firstBaseline" id="8C5-dP-4cw"/>
-                <constraint firstItem="80N-9Q-gJr" firstAttribute="firstBaseline" secondItem="Fk7-Tf-YHM" secondAttribute="firstBaseline" id="9fr-Eg-dK3"/>
-                <constraint firstItem="APQ-Ce-s4a" firstAttribute="leading" secondItem="tRl-Hz-AyT" secondAttribute="leading" id="BHR-vY-Qrk"/>
-                <constraint firstItem="oeW-lK-4eE" firstAttribute="top" secondItem="1" secondAttribute="top" id="Cl3-kL-wWq"/>
-                <constraint firstItem="cVV-UY-pgQ" firstAttribute="top" secondItem="oeW-lK-4eE" secondAttribute="bottom" constant="4" id="D5Y-9J-Mf7"/>
+                <constraint firstItem="kRo-eM-E1B" firstAttribute="top" secondItem="1" secondAttribute="top" id="1BF-7o-Mks"/>
                 <constraint firstAttribute="bottom" secondItem="rh8-gw-0HD" secondAttribute="bottom" constant="4" id="Flj-wm-LLG"/>
-                <constraint firstItem="oeW-lK-4eE" firstAttribute="leading" secondItem="tRl-Hz-AyT" secondAttribute="trailing" constant="4" id="Jq4-1x-VqM"/>
-                <constraint firstItem="VBh-go-Py8" firstAttribute="firstBaseline" secondItem="Fk7-Tf-YHM" secondAttribute="firstBaseline" id="KP5-Kk-SGe"/>
-                <constraint firstItem="tRl-Hz-AyT" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="8" id="MUo-6s-Jg5"/>
-                <constraint firstItem="Mdp-5X-J1X" firstAttribute="trailing" secondItem="BdB-qf-gub" secondAttribute="trailing" id="Oje-N1-IOE"/>
-                <constraint firstItem="uno-Kn-LVs" firstAttribute="leading" secondItem="cVV-UY-pgQ" secondAttribute="trailing" constant="8" id="QU8-ka-VyI"/>
-                <constraint firstItem="80N-9Q-gJr" firstAttribute="leading" secondItem="VBh-go-Py8" secondAttribute="trailing" constant="8" symbolic="YES" id="R62-6B-qZL"/>
-                <constraint firstItem="uno-Kn-LVs" firstAttribute="firstBaseline" secondItem="APQ-Ce-s4a" secondAttribute="firstBaseline" id="WN7-DM-7FF"/>
-                <constraint firstItem="Mdp-5X-J1X" firstAttribute="firstBaseline" secondItem="Fk7-Tf-YHM" secondAttribute="firstBaseline" id="Wp9-Ea-33I"/>
-                <constraint firstItem="Fk7-Tf-YHM" firstAttribute="leading" secondItem="tRl-Hz-AyT" secondAttribute="leading" id="a0b-K0-trL"/>
-                <constraint firstItem="VBh-go-Py8" firstAttribute="top" secondItem="cVV-UY-pgQ" secondAttribute="bottom" constant="4" id="cW4-cS-Bmo"/>
-                <constraint firstAttribute="trailing" secondItem="oeW-lK-4eE" secondAttribute="trailing" constant="12" id="cpW-D2-5EH"/>
-                <constraint firstItem="cVV-UY-pgQ" firstAttribute="leading" secondItem="APQ-Ce-s4a" secondAttribute="trailing" constant="4" id="i4i-Wt-D0C"/>
-                <constraint firstItem="cVV-UY-pgQ" firstAttribute="firstBaseline" secondItem="APQ-Ce-s4a" secondAttribute="firstBaseline" id="k23-FF-r8W"/>
-                <constraint firstItem="oeW-lK-4eE" firstAttribute="firstBaseline" secondItem="tRl-Hz-AyT" secondAttribute="firstBaseline" id="lp0-aJ-PnS"/>
-                <constraint firstItem="Mdp-5X-J1X" firstAttribute="leading" secondItem="BdB-qf-gub" secondAttribute="leading" id="mSO-cL-qKQ"/>
-                <constraint firstItem="BdB-qf-gub" firstAttribute="leading" secondItem="uno-Kn-LVs" secondAttribute="trailing" constant="4" id="rvk-SW-EfS"/>
+                <constraint firstAttribute="trailing" secondItem="cmC-ci-Ayw" secondAttribute="trailing" constant="12" id="Za7-mt-n4U"/>
+                <constraint firstItem="rh8-gw-0HD" firstAttribute="top" secondItem="kRo-eM-E1B" secondAttribute="bottom" constant="6" id="lMJ-kG-jA2"/>
+                <constraint firstAttribute="trailing" secondItem="kRo-eM-E1B" secondAttribute="trailing" constant="12" id="qLL-hD-W3w"/>
                 <constraint firstItem="rh8-gw-0HD" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="sIb-kJ-9te"/>
-                <constraint firstItem="VBh-go-Py8" firstAttribute="trailing" secondItem="cVV-UY-pgQ" secondAttribute="trailing" id="tR0-TR-o6t"/>
-                <constraint firstItem="cVV-UY-pgQ" firstAttribute="leading" secondItem="oeW-lK-4eE" secondAttribute="leading" id="tXf-fr-Mz3"/>
-                <constraint firstItem="VBh-go-Py8" firstAttribute="leading" secondItem="cVV-UY-pgQ" secondAttribute="leading" id="vGN-Sl-gv6"/>
+                <constraint firstItem="kRo-eM-E1B" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="8" id="wSS-s6-5Em"/>
+                <constraint firstItem="cmC-ci-Ayw" firstAttribute="centerY" secondItem="rh8-gw-0HD" secondAttribute="centerY" id="wnq-gd-b8x"/>
             </constraints>
-            <point key="canvasLocation" x="-133.5" y="175"/>
+            <point key="canvasLocation" x="-133.5" y="238.5"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="YPh-5H-fuE"/>
+        <menu id="aYI-td-gXO">
+            <items>
+                <menuItem title="Show Start/End" id="Rvo-a4-7ze">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <binding destination="YPh-5H-fuE" name="value" keyPath="values.com_RafalBuchner_TextSequencer_ShowStartEnd" id="vEf-pI-bMA"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Show Left/Right" id="oC3-1d-GTW">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <binding destination="YPh-5H-fuE" name="value" keyPath="values.com_RafalBuchner_TextSequencer_ShowLeftRight" id="69I-dp-QrR"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-331" y="83"/>
+        </menu>
     </objects>
+    <resources>
+        <image name="NSActionTemplate" width="20" height="20"/>
+    </resources>
 </document>

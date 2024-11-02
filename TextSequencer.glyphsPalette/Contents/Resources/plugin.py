@@ -32,6 +32,13 @@ class TextSequencer(PalettePlugin):
     def settings(self):
         self.name = "Text Sequencer"
         self.loadNib('IBdialog', __file__)
+        Glyphs.registerDefault("com_RafalBuchner_TextSequencer_ShowStartEnd", True)
+        Glyphs.registerDefault("com_RafalBuchner_TextSequencer_ShowLeftRight", True)
+        self.stringInputStart.leadingAnchor().constraintEqualToAnchor_(self.stringInputMain.leadingAnchor()).setActive_(True)
+        self.stringInputStart.leadingAnchor().constraintEqualToAnchor_(self.stringInputLeft.leadingAnchor()).setActive_(True)
+        self.stringInputEnd.leadingAnchor().constraintEqualToAnchor_(self.stringInputRight.leadingAnchor()).setActive_(True)
+        self.stringInputStart.trailingAnchor().constraintEqualToAnchor_(self.stringInputLeft.trailingAnchor()).setActive_(True)
+        self.stringInputEnd.trailingAnchor().constraintEqualToAnchor_(self.stringInputRight.trailingAnchor()).setActive_(True)
 
     @objc.IBAction
     def insert_(self, sender):
@@ -64,11 +71,18 @@ class TextSequencer(PalettePlugin):
 
         tabLayers = [layer for layer in tab.layers]
         glyphsToInsert = splitText(self.stringInputMain.stringValue(), cmap)
-        glyphsToInsertStart = splitText(self.stringInputStart.stringValue(), cmap)
-        glyphsToInsertEnd = splitText(self.stringInputEnd.stringValue(), cmap)
-        glyphsToInsertLeft = splitText(self.stringInputLeft.stringValue(), cmap)
-        glyphsToInsertRight = splitText(self.stringInputRight.stringValue(), cmap)
-
+        if Glyphs.defaults["com_RafalBuchner_TextSequencer_ShowStartEnd"]:
+            glyphsToInsertStart = splitText(self.stringInputStart.stringValue(), cmap)
+            glyphsToInsertEnd = splitText(self.stringInputEnd.stringValue(), cmap)
+        else:
+            glyphsToInsertStart = ""
+            glyphsToInsertEnd = ""
+        if Glyphs.defaults["com_RafalBuchner_TextSequencer_ShowLeftRight"]:
+            glyphsToInsertLeft = splitText(self.stringInputLeft.stringValue(), cmap)
+            glyphsToInsertRight = splitText(self.stringInputRight.stringValue(), cmap)
+        else:
+            glyphsToInsertLeft = ""
+            glyphsToInsertRight = ""
         layersToInsert = []
 
         for name in glyphsToInsert:
